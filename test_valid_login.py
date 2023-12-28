@@ -29,8 +29,8 @@ class TestValid():
     self.driver.find_element(By.CSS_SELECTOR, "*[data-test=\"password\"]").click()
     self.driver.find_element(By.CSS_SELECTOR, "*[data-test=\"password\"]").send_keys("secret_sauce")
     self.driver.find_element(By.XPATH, "//input[@id=\'login-button\']").click()
-    listOfProducts = self.driver.find_elements(By.CLASS_NAME,"inventory_item")
-    assert len(listOfProducts)  == 6
+    self.vars["itemCount"] = len(self.driver.find_elements(By.XPATH, "//div[@class=\'inventory_item\']"))
+    assert(self.vars["itemCount"] == 6)
     self.driver.close()
      
        
